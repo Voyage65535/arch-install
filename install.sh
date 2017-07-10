@@ -1,6 +1,10 @@
 #!/bin/sh
 
-source install/inst.conf
+SOURCE='https://githubusercontent.com/voyage65535/arch-install/master/'
+wget "${SOURCE}install/inst.conf"
+#vim inst.conf
+source inst.conf
+
 HANDLE='echo -e "\033[31mInstallation failed in install.sh:${FUNCNAME[0]}:${LINENO}, exit.\033[0m"; exit 1'
 trap "$HANDLE" ERR
 
@@ -20,9 +24,11 @@ sed -i "7 a${MIRROR}" /etc/pacman.d/mirrorlist
 pacstrap $ROOTFS base base-devel
 genfstab -U $ROOTFS >> $ROOTFS/etc/fstab
 
-ABSPATH="${ROOTFS}/root/archinst"
-NEXT="${ABSPATH:${#ROOTFS}}/install/config.sh"
-mkdir -p $ABSPATH
-cp -r . $ABSPATH
+ABSPATH="${ROOTFS}/root/install/"
+NEXT="${ABSPATH:${#ROOTFS}}config.sh"
+mkdir -p ${ABSPATH}
+wget "${SOURCE}install/config.sh" -O "${ABSPATH}config.sh"
+cp inst.conf "${ABSPATH}inst.conf"
 arch-chroot $ROOTFS /bin/sh $NEXT
+rm -r $ABSPATH
 

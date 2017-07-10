@@ -1,7 +1,6 @@
 #!/bin/sh
 
-#source inst.conf
-source /root/archinst/install/inst.conf
+source /root/install/inst.conf
 HANDLE='echo -e "\033[31mInstallation failed in install/config.sh:${FUNCNAME[0]}:${LINENO}, exit.\033[0m"; exit 1'
 trap "$HANDLE" ERR
 
@@ -30,5 +29,7 @@ echo -e '\ny' | pacman -S git vim zsh ntfs-3g tree netcat wget axel htop rlwrap 
 echo y | pacman -Rsn reiserfsprogs xfsprogs jfsutils pcmciautils mdadm lvm2 vi nano
 
 passwd
+
+git clone https://github.com/voyage65535/arch-install.git ~/arch-install
 exit
 

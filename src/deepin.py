@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import data
+import src
 from os import system
 from os.path import expanduser
-from shutils import copy
+from shutil import copy
 from sys import stdout, stderr
 from sh import pacman, sed, gsettings
 
@@ -20,14 +20,14 @@ def deconf():
     pacman(S='xorg-xinit', _in='y', _out=stdout, _err=stderr)
     pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sunpinyin', 'fcitx-mozc', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
-    copy(data.xinitrc, '/etc/X11/xinit/xinitrc')
+    copy(src.xinitrc, '/etc/X11/xinit/xinitrc')
 
 def ddeconf():
-    copy(data.locale, '~/.config/locale.conf')
-    copy(data.termconf, '~/.config/deepin/deepin-terminal/config.conf')
+    copy(src.locale, expanduser('~/.config/locale.conf'))
+    copy(src.termconf, expanduser('~/.config/deepin/deepin-terminal/config.conf'))
 
 def prvconf():
-    copy(data.audio, '~/.config/deepin/dde-daemon/audio.json')
+    copy(src.audio, expanduser('~/.config/deepin/dde-daemon/audio.json'))
     gsettings('set', 'com.deepin.dde.keybinding.system', 'terminal', "['<Super>B']")
 
 if __name__ == '__main__':

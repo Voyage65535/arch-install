@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 import src
-from os import system
-from os.path import expanduser
+from os import system, makedirs
 from shutil import copy
 from sys import stdout, stderr
 from sh import pacman, sed, gsettings
@@ -13,7 +12,7 @@ def dde():
     driv = input('Input your video driver (e.g. xf86-video-intel): ')
     pacman(S=driv, _in='y', _out=stdout, _err=stderr)
 
-    pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'otf-fira-mono', 'powerline-fonts', _in='y', _out=stdout, _err=stderr)
+    pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'noto-fonts-emoji', 'otf-fira-mono', 'powerline-fonts', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny', _out=stdout, _err=stderr)
 
 def deconf():
@@ -23,11 +22,13 @@ def deconf():
     copy(src.xinitrc, '/etc/X11/xinit/xinitrc')
 
 def ddeconf():
-    copy(src.locale, expanduser('~/.config/locale.conf'))
-    copy(src.termconf, expanduser('~/.config/deepin/deepin-terminal/config.conf'))
+    makedirs('/root/.config/deepin/deepin-terminal')
+    copy(src.locale, '/root/.config/locale.conf')
+    copy(src.termconf, '/root/.config/deepin/deepin-terminal/config.conf')
 
 def prvconf():
-    copy(src.audio, expanduser('~/.config/deepin/dde-daemon/audio.json'))
+    makedirs('/root/.config/deepin/dde-daemon')
+    copy(src.audio, '/root/.config/deepin/dde-daemon/audio.json')
     gsettings('set', 'com.deepin.dde.keybinding.system', 'terminal', "['<Super>B']")
 
 if __name__ == '__main__':

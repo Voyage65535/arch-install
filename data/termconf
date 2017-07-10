@@ -1,7 +1,7 @@
 [general]
 theme=argonaut
 opacity=0.85
-font=Fira Code
+font=Fira Mono
 font_size=12
 
 [shortcut]

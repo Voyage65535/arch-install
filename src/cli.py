@@ -4,7 +4,6 @@ import src
 from src import github_raw
 from shutil import copy
 from os import system, makedirs
-from os.path import expanduser
 from sys import stdout, stderr
 from sh import pacman, sh, wget, sed, systemctl
 from sh.contrib import git
@@ -16,12 +15,12 @@ def color():
 
 def zsh():
     system('wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')
-    git.clone('https://github.com/zsh-users/zsh-completions', expanduser('~/.oh-my-zsh/custom/plugins/zsh-completions'), _out=stdout, _err=stderr)
-    copy(src.zshrc, expanduser('~/.zshrc'))
+    git.clone('https://github.com/zsh-users/zsh-completions', '/root/.oh-my-zsh/custom/plugins/zsh-completions', _out=stdout, _err=stderr)
+    copy(src.zshrc, '/root/.zshrc')
 
 def vim():
-    git.clone('https://github.com/amix/vimrc.git', expanduser('~/.vim_runtime'), _out=stdout, _err=stderr)
-    sh(expanduser('~/.vim_runtime/install_awesome_vimrc.sh'), _out=stdout, _err=stderr)
+    git.clone('https://github.com/amix/vimrc.git', '/root/.vim_runtime', _out=stdout, _err=stderr)
+    sh('/root/.vim_runtime/install_awesome_vimrc.sh', _out=stdout, _err=stderr)
 
 def pkgmgr():
     copy(src.pacman, '/etc/pacman.conf')

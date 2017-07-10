@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import src.cli
 import src.deepin
 

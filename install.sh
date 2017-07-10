@@ -3,7 +3,7 @@
 SOURCE='https://raw.githubusercontent.com/voyage65535/arch-install/master/'
 wget "${SOURCE}install/inst.conf"
 #vim inst.conf
-source inst.conf
+source /root/inst.conf
 
 HANDLE='echo -e "\033[31mInstallation failed in install.sh:${FUNCNAME[0]}:${LINENO}, exit.\033[0m"; exit 1'
 trap "$HANDLE" ERR

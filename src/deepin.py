@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import src
+from src import home, root
 from os import system, makedirs
 from shutil import copy
 from sys import stdout, stderr
@@ -18,17 +18,19 @@ def dde():
 def deconf():
     pacman(S='xorg-xinit', _in='y', _out=stdout, _err=stderr)
     pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)
-    pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sunpinyin', 'fcitx-mozc', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
-    copy(src.xinitrc, '/etc/X11/xinit/xinitrc')
+    pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sogoupinyin', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
+    root('xinitrc')
+    home('env.ini')
+    home('profile')
 
 def ddeconf():
     makedirs('/root/.config/deepin/deepin-terminal')
-    copy(src.locale, '/root/.config/locale.conf')
-    copy(src.termconf, '/root/.config/deepin/deepin-terminal/config.conf')
+    home('locale.conf')
+    home('config.conf')
 
 def prvconf():
     makedirs('/root/.config/deepin/dde-daemon')
-    copy(src.audio, '/root/.config/deepin/dde-daemon/audio.json')
+    home('audio.json')
     gsettings('set', 'com.deepin.dde.keybinding.system', 'terminal', "['<Super>B']")
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import src
-from src import github_raw
+from src import home, root, github_raw
 from shutil import copy
 from os import system, makedirs
 from sys import stdout, stderr
@@ -16,14 +16,14 @@ def color():
 def zsh():
     system('wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')
     git.clone('https://github.com/zsh-users/zsh-completions', '/root/.oh-my-zsh/custom/plugins/zsh-completions', _out=stdout, _err=stderr)
-    copy(src.zshrc, '/root/.zshrc')
+    home('.zshrc')
 
 def vim():
     git.clone('https://github.com/amix/vimrc.git', '/root/.vim_runtime', _out=stdout, _err=stderr)
     sh('/root/.vim_runtime/install_awesome_vimrc.sh', _out=stdout, _err=stderr)
 
 def pkgmgr():
-    copy(src.pacman, '/etc/pacman.conf')
+    root('pacman.conf')
     pacman('-Syy', _out=stdout, _err=stderr)
     pacman(S='archlinuxcn-keyring', _in='y', _out=stdout, _err=stderr)
 

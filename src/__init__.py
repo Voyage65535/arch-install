@@ -1,4 +1,5 @@
 from os import makedirs
+from os.path import exists
 from shutil import copy
 
 github_raw = "https://raw.githubusercontent.com/"
@@ -18,17 +19,19 @@ _conf = {
     'locale.conf':'.config/',
     'pacman.conf':'etc/',
     'profile':'.config/fcitx/',
-    'xinitrc':'etc/X11/xinitrc/',
+    'xinitrc':'etc/X11/xinit/',
     '.zshrc':''
 }
 def home(name):
     data = 'data/'
     prefix = '/root/'
-    makedirs(prefix+_conf[name])
+    if not exists(prefix+_conf[name]):
+        makedirs(prefix+_conf[name])
     copy(data+_conf[name]+name, prefix+_conf[name])
 def root(name):
     data = 'data/'
     prefix = '/'
-    makedirs(prefix+_conf[nam])
+    if not exists(prefix+_conf[name]):
+        makedirs(prefix+_conf[name])
     copy(data+_conf[name]+name, prefix+_conf[name])
 

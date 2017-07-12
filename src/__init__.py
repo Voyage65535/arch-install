@@ -14,7 +14,7 @@ color = {
 _conf = {
     'audio.json':'.config/deepin/dde-daemon/',
     'config.conf':'.config/deepin/deepin-terminal/',
-    'env.ini':'.config/SogouPY/'
+    'env.ini':'.config/SogouPY/',
     'locale.conf':'.config/',
     'pacman.conf':'etc/',
     'profile':'.config/fcitx/'

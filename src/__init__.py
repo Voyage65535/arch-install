@@ -17,7 +17,7 @@ _conf = {
     'env.ini':'.config/SogouPY/',
     'locale.conf':'.config/',
     'pacman.conf':'etc/',
-    'profile':'.config/fcitx/'
+    'profile':'.config/fcitx/',
     'xinitrc':'etc/X11/xinitrc/',
     '.zshrc':''
 }

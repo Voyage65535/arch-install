@@ -12,6 +12,7 @@ def color():
     for i in src.color:
         wget(src.color[i], O=i, _out=stdout, _err=stderr)
         system('chmod a+x '+i)
+    pacman(S='pinfo', _in='y', _out=stdout, _err=stderr)
 
 def zsh():
     system('wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')

@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias info='pinfo'
 alias make='colormake'
 alias ping='prettyping'
 

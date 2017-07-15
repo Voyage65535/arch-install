@@ -13,12 +13,11 @@ color = {
 }
 
 _conf = {
-    'audio.json':'.config/deepin/dde-daemon/',
     'config.conf':'.config/deepin/deepin-terminal/',
-    'env.ini':'.config/SogouPY/',
     'locale.conf':'.config/',
     'pacman.conf':'etc/',
     'profile':'.config/fcitx/',
+    'user':'.config/dconf/'
     'xinitrc':'etc/X11/xinit/',
     '.zshrc':''
 }

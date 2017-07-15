@@ -8,7 +8,6 @@ from sh import pacman, sed, gsettings
 
 def dde():
     pacman(S='xorg', _in='\n\ny', _out=stdout, _err=stderr)
-    pacman(R='xf86-video-vesa', _in='y', _out=stdout, _err=stderr)
     driv = input('Input your video driver (e.g. xf86-video-intel): ')
     pacman(S=driv, _in='y', _out=stdout, _err=stderr)
 
@@ -20,18 +19,14 @@ def deconf():
     pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sogoupinyin', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
     root('xinitrc')
-    home('env.ini')
     home('profile')
 
 def ddeconf():
-    makedirs('/root/.config/deepin/deepin-terminal')
     home('locale.conf')
     home('config.conf')
 
 def prvconf():
-    makedirs('/root/.config/deepin/dde-daemon')
-    home('audio.json')
-    gsettings('set', 'com.deepin.dde.keybinding.system', 'terminal', "['<Super>B']")
+    home('user')
 
 if __name__ == '__main__':
     dde()

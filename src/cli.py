@@ -15,7 +15,7 @@ def color():
     pacman(S='pinfo', _in='y', _out=stdout, _err=stderr)
 
 def zsh():
-    system('wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')
+    system('wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')
     git.clone('https://github.com/zsh-users/zsh-completions', '/root/.oh-my-zsh/custom/plugins/zsh-completions', _out=stdout, _err=stderr)
     home('.zshrc')
 

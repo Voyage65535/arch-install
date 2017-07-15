@@ -8,9 +8,6 @@ from sh import pacman, sed, gsettings
 
 def dde():
     pacman(S='xorg', _in='\n\ny', _out=stdout, _err=stderr)
-    driv = input('Input your video driver (e.g. xf86-video-intel): ')
-    pacman(S=driv, _in='y', _out=stdout, _err=stderr)
-
     pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'noto-fonts-emoji', 'otf-fira-mono', 'powerline-fonts', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny', _out=stdout, _err=stderr)
 

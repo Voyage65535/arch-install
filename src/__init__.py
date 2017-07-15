@@ -2,7 +2,7 @@ from os import makedirs
 from os.path import exists
 from shutil import copy
 
-github_raw = "https://raw.githubusercontent.com/"
+github_raw = "https://raw.github.com/"
 
 _colormake='pagekite/colormake/master/'
 color = {

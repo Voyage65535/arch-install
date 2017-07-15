@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SOURCE='https://raw.githubusercontent.com/voyage65535/arch-install/master/'
+SOURCE='https://raw.github.com/voyage65535/arch-install/master/'
 wget "${SOURCE}install/inst.conf"
 #vim inst.conf
 source /root/inst.conf

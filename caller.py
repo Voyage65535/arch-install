@@ -14,6 +14,7 @@ src.cli.nfsrv()
 src.cli.misc()
 
 src.deepin.dde()
+#src.deepin.vbox
 src.deepin.deconf()
 src.deepin.ddeconf()
 src.deepin.prvconf()

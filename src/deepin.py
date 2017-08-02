@@ -11,6 +11,10 @@ def dde():
     pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'noto-fonts-emoji', 'otf-fira-mono', 'powerline-fonts', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny', _out=stdout, _err=stderr)
 
+def vbox():
+    pacman(S='virtualbox-guest-modules-arch virtualbox-guest-utils', _in='y', _out=stdout, _err=stderr)
+    systemctl('enable', 'vboxservice')
+
 def deconf():
     pacman(S='xorg-xinit', _in='y', _out=stdout, _err=stderr)
     pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)

@@ -17,7 +17,7 @@ _conf = {
     'locale.conf':'.config/',
     'pacman.conf':'etc/',
     'profile':'.config/fcitx/',
-    'user':'.config/dconf/'
+    'user':'.config/dconf/',
     'xinitrc':'etc/X11/xinit/',
     '.zshrc':''
 }

@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 
-from src    import inst_conf
-from os     import system, makedirs
-from shutil import copy
-from sys    import stdout, stderr
-from sh     import pacman, sed, gsettings
+from src import inst_conf
+from sys import stdout, stderr
+from sh  import pacman, sed, gsettings, systemctl
 
 def dde():
     pacman(S='xorg', _in='\n\ny', _out=stdout, _err=stderr)

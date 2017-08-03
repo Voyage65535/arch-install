@@ -2,7 +2,6 @@
 
 from src        import inst_conf, github_raw
 from src        import color as colour
-from shutil     import copy
 from os         import system, makedirs
 from sys        import stdout, stderr
 from sh         import pacman, sh, wget, sed, systemctl

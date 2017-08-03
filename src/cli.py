@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 
-from src        import inst_conf, github_raw
-from src        import color as colour
-from os         import system, makedirs
-from sys        import stdout, stderr
-from sh         import pacman, sh, wget, sed, systemctl
-from sh.contrib import git
+from src import inst_conf, github_raw
+from src import color as colour
+from src import sh, wget, pacman
+from os  import system, makedirs
+from sys import stdout, stderr
+from sh  import sed, systemctl, git
+
 
 def color():
     for i in colour:
-        wget(colour[i], O=i, _out=stdout, _err=stderr)
+        wget(colour[i], O=i)
         system('chmod a+x '+i)
-    pacman(S='pinfo', _in='y', _out=stdout, _err=stderr)
+    pacman(S='pinfo', _in='y')
 
 def zsh():
     system('wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh')
@@ -20,21 +21,21 @@ def zsh():
 
 def vim():
     git.clone('https://github.com/amix/vimrc.git', '/root/.vim_runtime', _out=stdout, _err=stderr)
-    sh('/root/.vim_runtime/install_awesome_vimrc.sh', _out=stdout, _err=stderr)
+    sh('/root/.vim_runtime/install_awesome_vimrc.sh')
 
 def pkgmgr():
     inst_conf('/', 'pacman.conf')
-    pacman('-Syy', _out=stdout, _err=stderr)
-    pacman(S='archlinuxcn-keyring', _in='y', _out=stdout, _err=stderr)
+    pacman('-Syy')
+    pacman(S='archlinuxcn-keyring', _in='y')
 
 def sshd():
-    pacman(S='openssh', _in='y', _out=stdout, _err=stderr)
+    pacman(S='openssh', _in='y')
     sed('s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g', i='/etc/ssh/sshd_config')
     systemctl('enable', 'sshd')
     systemctl('start', 'sshd')
 
 def nfsrv():
-    pacman(S='nfs-utils', _in='y', _out=stdout, _err=stderr)
+    pacman(S='nfs-utils', _in='y')
     makedirs('/srv/nfs4')
     with open('/etc/exports', 'a') as f:
         f.write('\n  /srv/nfs4        192.168.0.*(rw,sync,fsid=0,no_wdelay,no_root_squash,no_subtree_check)\n\n')
@@ -42,7 +43,7 @@ def nfsrv():
     systemctl('start', 'nfs-server')
 
 def misc():
-    wget(github_raw+'racaljk/hosts/master/hosts', O='/etc/hosts', _out=stdout, _err=stderr)
+    wget(github_raw+'racaljk/hosts/master/hosts', O='/etc/hosts')
 
 
 if __name__ == '__main__':

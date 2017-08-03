@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 
-from src import inst_conf
-from sys import stdout, stderr
-from sh  import pacman, sed, gsettings, systemctl
+from src import inst_conf, pacman
+from sh  import sed, gsettings, systemctl
+
 
 def dde():
-    pacman(S='xorg', _in='\n\ny', _out=stdout, _err=stderr)
-    pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'noto-fonts-emoji', 'otf-fira-mono', 'powerline-fonts', _in='y', _out=stdout, _err=stderr)
-    pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny', _out=stdout, _err=stderr)
+    pacman(S='xorg', _in='\n\ny')
+    pacman('-S', 'noto-fonts', 'noto-fonts-cjk', 'noto-fonts-emoji', 'otf-fira-mono', 'powerline-fonts', _in='y')
+    pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny')
 
 def vbox():
-    pacman(S='virtualbox-guest-modules-arch virtualbox-guest-utils', _in='y', _out=stdout, _err=stderr)
+    pacman(S='virtualbox-guest-modules-arch virtualbox-guest-utils', _in='y')
     systemctl('enable', 'vboxservice')
 
 def deconf():
-    pacman(S='xorg-xinit', _in='y', _out=stdout, _err=stderr)
-    pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)
-    pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sogoupinyin', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
+    pacman(S='xorg-xinit', _in='y')
+    pacman(S='numlockx', _in='y')
+    pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sogoupinyin', 'fcitx-table-other', _in='\ny')
     inst_conf('/', 'xinitrc')
     inst_conf('~', 'profile')
 

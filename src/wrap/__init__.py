@@ -31,6 +31,6 @@ class _cmd_generator(ModuleType):
         return partial(_stub, item)
 
 if __name__ != '__main__':
-    print(__name__)
     self = modules[__name__]
     modules[__name__] = _cmd_generator(self)
+

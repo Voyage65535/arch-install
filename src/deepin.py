@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
-from src import home, root
-from os import system, makedirs
+from src    import inst_conf
+from os     import system, makedirs
 from shutil import copy
-from sys import stdout, stderr
-from sh import pacman, sed, gsettings
+from sys    import stdout, stderr
+from sh     import pacman, sed, gsettings
 
 def dde():
     pacman(S='xorg', _in='\n\ny', _out=stdout, _err=stderr)
@@ -19,15 +19,15 @@ def deconf():
     pacman(S='xorg-xinit', _in='y', _out=stdout, _err=stderr)
     pacman(S='numlockx', _in='y', _out=stdout, _err=stderr)
     pacman('-S', 'fcitx-im', 'fcitx-configtool', 'fcitx-sogoupinyin', 'fcitx-table-other', _in='\ny', _out=stdout, _err=stderr)
-    root('xinitrc')
-    home('profile')
+    inst_conf('/', 'xinitrc')
+    inst_conf('~', 'profile')
 
 def ddeconf():
-    home('locale.conf')
-    home('config.conf')
+    inst_conf('~', 'locale.conf')
+    inst_conf('~', 'config.conf')
 
 def prvconf():
-    home('user')
+    inst_conf('~', 'user')
 
 if __name__ == '__main__':
     dde()

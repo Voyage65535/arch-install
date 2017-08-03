@@ -11,7 +11,7 @@ def dde():
     pacman('-S', 'deepin', 'deepin-extra', _in='\n\n\ny')
 
 def vbox():
-    pacman(S='virtualbox-guest-modules-arch virtualbox-guest-utils', _in='y')
+    pacman(S='virtualbox-guest-modules-arch', 'virtualbox-guest-utils', _in='y')
     systemctl('enable', 'vboxservice')
 
 def deconf():

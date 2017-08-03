@@ -25,13 +25,14 @@ echo '[global]' >> /etc/pip.conf
 echo "index-url = ${PIPMIR}" >> /etc/pip.conf
 pip install sh
 
-echo -e '\ny' | pacman -S git vim zsh thefuck ntfs-3g tree netcat wget axel htop rlwrap p7zip
+echo -e '\ny' | pacman -S git vim cloc zsh thefuck ntfs-3g tree netcat wget axel htop rlwrap p7zip
 echo y | pacman -Rsn reiserfsprogs xfsprogs jfsutils pcmciautils mdadm lvm2 vi nano
 
 ln -sf /usr/bin/vim /usr/bin/vi
 ln -sf /usr/bin/vim /usr/bin/nano
 
-git clone https://github.com/voyage65535/arch-install.git ~/arch-install
+git clone -b develop https://github.com/voyage65535/arch-install.git ~/arch-install
+#git clone https://github.com/voyage65535/arch-install.git ~/arch-install
 
 passwd
 exit

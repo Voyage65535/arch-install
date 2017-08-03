@@ -31,8 +31,8 @@ echo y | pacman -Rsn reiserfsprogs xfsprogs jfsutils pcmciautils mdadm lvm2 vi n
 ln -sf /usr/bin/vim /usr/bin/vi
 ln -sf /usr/bin/vim /usr/bin/nano
 
-git clone -b develop https://github.com/voyage65535/arch-install.git ~/arch-install
-#git clone https://github.com/voyage65535/arch-install.git ~/arch-install
+#git clone -b develop https://github.com/voyage65535/arch-install.git ~/arch-install
+git clone https://github.com/voyage65535/arch-install.git ~/arch-install
 
 passwd
 exit

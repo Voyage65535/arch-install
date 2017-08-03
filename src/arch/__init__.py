@@ -34,5 +34,5 @@ def inst_conf(prefix, name):
 
     if not exists(path):
         makedirs(path)
-    copy(data + _conf[name], path)
+    copy(data + _conf[name] + name, path)
 

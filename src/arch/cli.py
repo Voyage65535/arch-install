@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from src import inst_conf, github_raw
-from src import color as colour
-from src import sh, wget, pacman
-from os  import system, makedirs
-from sys import stdout, stderr
-from sh  import sed, systemctl, git
+from arch import inst_conf, github_raw
+from arch import color as colour
+from os   import system, makedirs
+from sys  import stdout, stderr
+from sh   import sed, systemctl, git
+from wrap import sh, wget, pacman
 
 
 def color():

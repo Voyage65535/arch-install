@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
-from src import inst_conf, pacman
-from sh  import sed, gsettings, systemctl
+from arch import inst_conf
+from sh   import sed, gsettings, systemctl
+from wrap import pacman
 
 
 def dde():

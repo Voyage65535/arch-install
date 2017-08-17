@@ -29,7 +29,7 @@ _conf = {
 
 
 def inst_conf(prefix, name):
-    data = 'data/'
+    data = '../data/'
     path = _conf[prefix] + _conf[name]
 
     if not exists(path):
